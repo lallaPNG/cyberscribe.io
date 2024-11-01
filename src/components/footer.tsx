@@ -4,7 +4,8 @@ import { POSTS } from "@/lib/constants";
 import { Icons } from "./icons";
 import Link from "next/link";
 // import { Input } from "./ui/input";
-// import { Button } from "./ui/button";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 // import { createSubscriber } from "@/lib/actions";
 // import { useFormState } from "react-dom";
 
@@ -33,7 +34,7 @@ export default function Footer() {
               {/* <Icons.twitter className="h-6 w-6 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300" />
               </a> */}
               <a
-                href="https://github.com/w3tsadev"
+                href="https://github.com/lallaPNG"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Github"
@@ -100,26 +101,19 @@ export default function Footer() {
               Subscribe to our newsletter to stay up-to-date with the latest
               news and updates.
             </p>
-            {/* <form action={dispatch}>
+            {/* <form action={dispatch}>*/}
+            <form>
               <div className="flex space-x-2">
-                // <Input
-                //   type="email"
-                //   name="email"
-                //   id="email"
-                //   placeholder="Enter your email"
-                //   className="flex-1"
-                //   defaultValue=""
-                //   aria-describedby="email-error"
-                // />
+                <Input type="email" />
                 <Button>Subscribe</Button>
               </div>
-              <div
-                id="email-error"
-                aria-label="polite"
-                aria-atomic="true"
-                className="px-1"
-              >
-                {/* {state?.errors?.email &&
+              {/* <div
+              id="email-error"
+              aria-label="polite"
+              aria-atomic="true"
+              className="px-1"
+            > */}
+              {/* {state?.errors?.email &&
                   state.errors.email.map((error: string) => (
                     <p key={error} className="text-xs text-red-500">
                       {error}
@@ -128,14 +122,16 @@ export default function Footer() {
                 {!state?.errors?.email && (
                   <p className="text-xs text-green-500">{state?.message}</p>
                 )} */}
-            {/* </div>
+              {/* </div>
             </form>  */}
+            </form>
           </div>
         </div>
-        <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-500 dark:border-gray-700 dark:text-gray-400">
-          &copy; 2024 Cyberscribe. All rights reserved.
-        </div>
       </div>
+      <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-500 dark:border-gray-700 dark:text-gray-400">
+        &copy; 2024 Cyberscribe. All rights reserved.
+      </div>
+      {/* </div> */}
     </footer>
   );
 }
