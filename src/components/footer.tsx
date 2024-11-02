@@ -17,16 +17,16 @@ export default function Footer() {
               Stay Up to Date with the latest news and insights from our blog.
             </p>
             <div className="flex space-x-4">
-              <a
+              {/* <a
                 href="https://twitter.com/w3tsadev"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
               >
                 <Icons.twitter className="h-6 w-6 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300" />
-              </a>
+              </a> */}
               <a
-                href="https://github.com/w3tsadev"
+                href="https://github.com/lallaPNG"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Github"

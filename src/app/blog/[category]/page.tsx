@@ -1,15 +1,37 @@
-import CardCategory from "@/components/CardCategory";
+import { notFound } from "next/navigation";
 import { getBlogPosts } from "../utils";
-import { Link } from "lucide-react";
+import Link from "next/link";
 import Container from "@/components/Container";
+import CardCategory from "@/components/CardCategory";
 import Header from "@/components/Header";
 
-export default function Page({ params }: { params: { category: string } }) {
+interface PageProps {
+  params: { category: string; slug?: string };
+}
+
+export async function generateStaticParams() {
+  const posts = getBlogPosts();
+
+  return posts.map((post) => ({
+    category: post.metadata.category,
+  }));
+}
+
+export function generateMetadata({ params }: { params: { category: string } }) {
+  const { category } = params;
+
+  return {
+    title: category.toLocaleUpperCase(),
+    description: `All articles reagarding ${category}`,
+  };
+}
+
+export default function Page({ params }: PageProps) {
   const posts = getBlogPosts().filter(
     (post) => post.metadata.category === params.category
   );
 
-  if (!posts) {
+  if (!posts.length) {
     notFound();
   }
   return (
