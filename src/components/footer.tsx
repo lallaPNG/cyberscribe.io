@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Icons.logo className="h-6 w-6" />
-              <span className="text-md font-semibold">Coding Jitsu</span>
+              <span className="text-md font-semibold">Cyberscribe</span>
             </div>
             <p className="text-gray-500 dark:text-gray-400 text-sm">
               Stay Up to Date with the latest news and insights from our blog.
@@ -98,7 +98,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-500 dark:border-gray-700 dark:text-gray-400">
-          &copy; 2024 Coding Jitsu. All rights reserved.
+          &copy; 2024 Cyberscribe. All rights reserved.
         </div>
       </div>
     </footer>
