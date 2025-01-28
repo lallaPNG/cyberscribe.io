@@ -18,14 +18,24 @@ export default function LatestPosts() {
           return 1;
         })
         .map((post) => (
-          <article key={post.slug} className="text-wrap max-w-md my-10">
+          <article
+            key={post.slug}
+            className="text-wrap max-w-md my-10"
+            data-testid="post-article"
+          >
             <Link href={`/blog/${post.metadata.category}/${post.slug}`}>
-              <h3 className="font-bold py-2 leading-5 hover:text-blue-400">
+              <h3
+                className="font-bold py-2 leading-5 hover:text-blue-400"
+                data-testid="post-title"
+              >
                 {post.metadata.title}
               </h3>
             </Link>
             <p className="leading-8 my-5">{post.metadata.summary}</p>
-            <p className="text-sm text-muted-foreground">
+            <p
+              className="text-sm text-muted-foreground"
+              data-testid="post-date"
+            >
               {formatDate(post.metadata.publishedAt)}
             </p>
           </article>
