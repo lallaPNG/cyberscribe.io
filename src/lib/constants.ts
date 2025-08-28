@@ -21,10 +21,10 @@ export const POSTS: { title: string; href: string; description: string }[] = [
     description: "How to make your next app Blazing fast",
   },
   {
-    title: "Animaion",
-    href: "/blog/animations",
+    title: "Security",
+    href: "/blog/security",
     description:
-      "Everything you need to know about animations. We are going to learn about animation library like framer motion, GSAP and many more.",
+      "Everything you need to know about security. We are going to learn about security.",
   },
   {
     title: "Career",
