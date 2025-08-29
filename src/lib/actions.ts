@@ -1,12 +1,18 @@
 "use server";
+import { validateEmailAddress } from "@/app/blog/utils";
 import { db } from "@/db";
-import { Prisma } from "@prisma/client";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 const FormSchema = z.object({
   id: z.number(),
-  email: z.string().min(1, { message: "Email is required." }),
+  email: z
+    .string()
+    .email({ message: "A valid Email is required." })
+    .refine(validateEmailAddress, {
+      message: "Email does not meet custom validation rules",
+    }),
   isSubscribed: z.boolean(),
 });
 
@@ -20,7 +26,7 @@ type State = {
 };
 
 export async function createSubscriber(prevState: State, formData: FormData) {
-  const validatedField = CreateSubscriber.safeParse({
+  const validatedField = await CreateSubscriber.safeParseAsync({
     email: formData.get("email"),
   });
 
@@ -42,16 +48,15 @@ export async function createSubscriber(prevState: State, formData: FormData) {
     revalidatePath("/");
     return { message: "Thank you for Subscribing!" };
   } catch (error) {
-    if (error) {
-      if (error instanceof Prisma.PrismaClientKnownRequestError) {
-        if (error.code === "P2002") {
-          return {
-            message: "Email already Exist in the DB",
-          };
-        }
+    if (error instanceof PrismaClientKnownRequestError) {
+      if (error.code === "P2002") {
+        return {
+          message: "Email already exists in the database",
+        };
       }
     }
-
+    
+    console.error("Subscription error:", error);
     return { message: "Database Error: Failed to create Subscriber." };
   }
 }
